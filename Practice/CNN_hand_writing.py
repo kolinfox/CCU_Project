@@ -1,6 +1,6 @@
 #https://www.youtube.com/watch?v=FyXlvui--Vw&t=348s&ab_channel=%E6%9D%8E%E6%94%BF%E8%BB%92
 #我的第一支快速利用TensorFlow 2.0建立CNN進行手寫數字分類
-#date 2021.3.5
+#date 2021.3.15
 
 #tensorflow version 2.4.1
 
@@ -56,5 +56,15 @@ CNN.compile(optimizer = "Adam",
             metrics = ["accuracy"])
 
 
-#開始比對
-CNN.fit(x_train, y_train, epochs = 5) # epochs可以用很多 但可能會overfitting
+#開始訓練
+CNN.fit(x_train, y_train, epochs = 5) # epochs可以用很多，但可能會overfitting
+
+
+#算正確率
+import numpy as np
+np.mean((CNN.predict_classes(x_test) == y_test)) # model.predict_classes()是影片中使用的function，但是在2021-1-1被移除了。
+
+#  UserWarning: `model.predict_classes()` is deprecated and will be removed after 2021-01-01. Please use instead:* `np.argmax(model.predict(x), axis=-1)`,   
+#  if your model does multi-class classification   (e.g. if it uses a `softmax` last-layer activation).* `(model.predict(x) > 0.5).astype("int32")`,   
+#  if your model does binary classification   (e.g. if it uses a `sigmoid` last-layer activation).
+#  warnings.warn('`model.predict_classes()` is deprecated and '
