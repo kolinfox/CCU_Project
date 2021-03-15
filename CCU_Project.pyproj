@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>da1d7251-2917-4915-808c-e9272194fadf</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>CCU_Project.py</StartupFile>
+    <StartupFile>Practice\CNN_hand_writing.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
