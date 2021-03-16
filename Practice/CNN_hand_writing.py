@@ -36,13 +36,15 @@ from tensorflow.keras import layers
 
 CNN = keras.Sequential(name = "CNN")
 #1層
-CNN.add(layers.Conv2D(32, (3, 3), activation = "relu", input_shape = (28, 28 ,1))) # 2D的影像，32是convolution完後要有幾個node，(3, 3)是convolution的size，中間層儘量都用relu，第一層一定要有input_shpae。Output會變成26*26，影像處理的概念。
-CNN.add(layers.MaxPooling2D(2, 2)) # 通常會搭配Maxpooling 2*2是習慣 13*13*32
+CNN.add(layers.Conv2D(32, (3, 3), activation = "relu", input_shape = (28, 28 ,1))) # 2D的影像，32是convolution完後要有幾個neuron，(3, 3)是convolution的size，
+                                                                                   # 中間層儘量都用relu，第一層一定要有input_shpae。
+                                                                                   # Output會變成26*26，影像處理的概念。
+CNN.add(layers.MaxPooling2D(2, 2)) # (subsampling)通常會搭配MaxPooling(即取最大) 2*2是習慣 13*13*32
 #2層
 CNN.add(layers.Conv2D(64, (3, 3), activation = "relu")) # 11*11*64
-CNN.add(layers.MaxPooling2D(2, 2)) # 通常會搭配Maxpooling 2*2是習慣 5*5*64
+CNN.add(layers.MaxPooling2D(2, 2)) # (subsampling)通常會搭配MaxPooling(即取最大) 2*2是習慣 5*5*64
 
-CNN.add(layers.Flatten()) # 壓平，5*5*64 = 1600 (64個5*5的圖像)。
+CNN.add(layers.Flatten()) # 壓平(把矩陣拉直)，5*5*64 = 1600 (64個5*5的圖像)。
 CNN.add(layers.Dense(128, activation = "relu"))
 CNN.add(layers.Dense(64, activation = "relu"))
 CNN.add(layers.Dense(10, activation = "softmax")) # 手寫資料集，0~9共10個。分類用softmax
